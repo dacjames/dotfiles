@@ -5,7 +5,7 @@ export ZSH=/Users/dcollins/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="agnoster"
+ZSH_THEME="robbyrussell"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -127,5 +127,6 @@ alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 if [ ! -d "$HOME/.dotfiles" ]; then
   git init --bare "$HOME/.dotfiles"
   dotfiles config --local status.showUntrackedFiles no
+  dotfiles config --local status.relativePaths no
 fi
 
