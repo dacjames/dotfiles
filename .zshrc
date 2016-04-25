@@ -135,5 +135,6 @@ fi
 # Enable iterm2 shell integration
 
 if [ -f "$HOME/.iterm2_shell_integration.$(basename $SHELL)" ]; then
-    source "$HOME/.iterm2_shell_integration.$(basename $SHELL)"
+  export ITERM2_DISABLE_PROMPT_DECORATION=yes
+  source "$HOME/.iterm2_shell_integration.$(basename $SHELL)"
 fi
