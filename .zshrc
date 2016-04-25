@@ -132,9 +132,3 @@ if [ ! -d "$HOME/.dotfiles" ]; then
   dotfiles config --local status.relativePaths no
 fi
 
-# Enable iterm2 shell integration
-
-if [ -f "$HOME/.iterm2_shell_integration.$(basename $SHELL)" ]; then
-  export ITERM2_DISABLE_PROMPT_DECORATION=yes
-  source "$HOME/.iterm2_shell_integration.$(basename $SHELL)"
-fi
