@@ -85,6 +85,8 @@ source $ZSH/oh-my-zsh.sh
 
 POWERLINE_SOURCE="$HOME/Code/powerline/powerline"
 POWERLINE_VENV="$HOME/.venv/powerline"
+POWERLINE_PIP="$POWERLINE_VENV/bin/pip"
+POWERLINE_PYTHON="$POWERLINE_VENV/bin/python"
 
 ## If powerline breaks b/c of python updates:
 ##   - Recreate ~/.venv/powerline
@@ -98,14 +100,14 @@ if ! "$POWERLINE_VENV/bin/python" --version >/dev/null 2>&1; then
     fi
     mv "$POWERLINE_VENV" "$POWERLINE_VENV.bckp"
     virtualenv "$POWERLINE_VENV"
-    "$POWERLINE_VENV/bin/pip" install -e "$POWERLINE_SOURCE"
-    powerline-daemon --replace
+    "$POWERLINE_PIP" install -e "$POWERLINE_SOURCE"
+    "$POWERLINE_PYTHON" "$POWERLINE_SOURCE/scripts/powerline-daemon" --replace
 fi
 
 
 ## Powerline ##
 # Start the background daemon
-powerline-daemon -q
+"$POWERLINE_PYTHON" "$POWERLINE_SOURCE/scripts/powerline-daemon" -q
 # Enable the powerline prompt
 source "$POWERLINE_SOURCE/powerline/bindings/zsh/powerline.zsh"
 
@@ -130,3 +132,8 @@ if [ ! -d "$HOME/.dotfiles" ]; then
   dotfiles config --local status.relativePaths no
 fi
 
+# Enable iterm2 shell integration
+
+if [ -f "$HOME/.iterm2_shell_integration.$(basename $SHELL)" ]; then
+    source "$HOME/.iterm2_shell_integration.$(basename $SHELL)"
+fi
