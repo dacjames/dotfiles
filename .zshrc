@@ -104,6 +104,10 @@ if ! "$POWERLINE_VENV/bin/python" --version >/dev/null 2>&1; then
     "$POWERLINE_PYTHON" "$POWERLINE_SOURCE/scripts/powerline-daemon" --replace
 fi
 
+if ! "$POWERLINE_VENV/bin/python" -c 'import powerline_gitstatus' >/dev/null 2>&1; then
+  echo "installing powerline-gitstatus"
+  "$POWERLINE_PIP" install powerline-gitstatus
+fi
 
 ## Powerline ##
 # Start the background daemon
@@ -132,3 +136,8 @@ if [ ! -d "$HOME/.dotfiles" ]; then
   dotfiles config --local status.relativePaths no
 fi
 
+# Adobe Font Developer Kit
+if [ -d "/usr/local/FDK" ]; then
+  export FDK_PATH="/usr/local/FDK/Tools/osx"
+  export PATH="$FDK_PATH:$PATH"
+fi
