@@ -117,6 +117,7 @@ alias gs='git status'
 alias gm='git commit -m'
 alias gf='git flow'
 alias gl='git lg'
+alias gdc='git diff --cached'
 
 # dotfiles
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
