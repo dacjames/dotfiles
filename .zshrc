@@ -118,6 +118,8 @@ alias gm='git commit -m'
 alias gf='git flow'
 alias gl='git lg'
 
+export EDITOR=$(which vim)
+
 # dotfiles
 alias dotfiles='git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 if [ ! -d "$HOME/.dotfiles" ]; then
