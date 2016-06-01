@@ -146,3 +146,13 @@ if [ -f ~/.zshrc.local ]; then
     source ~/.zshrc.local
 fi
 
+function vice_login() {
+  local username=$1
+  local password=""
+  echo -n "Please enter VICE password for $username: "
+  read -sr password
+  echo
+  export VICE_USERNAME="$username"
+  export VICE_PWD="$password"
+}
+
