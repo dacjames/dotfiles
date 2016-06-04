@@ -141,6 +141,13 @@ if which jenv > /dev/null; then eval "$(jenv init -)"; fi
 # Ruby Env
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
+# Conscript (Scala)
+if [ -d ~/.conscript ]; then
+    export CONSCRIPT_HOME="$HOME/.conscript"
+    export CONSCRIPT_OPTS="-XX:MaxPermSize=512M -Dfile.encoding=UTF-8"
+    export PATH="$CONSCRIPT_HOME/bin:$PATH"
+fi
+
 # Load functions
 if [ -f ~/.zshrc.functions ]; then
     source ~/.zshrc.functions
