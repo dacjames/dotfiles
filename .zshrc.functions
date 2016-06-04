@@ -1,0 +1,9 @@
+function vice_login() {
+  local username=${1:-$USER}
+  local password=""
+  echo -n "Please enter VICE password for $username: "
+  read -sr password
+  echo
+  export VICE_USER="$username"
+  export VICE_PWD="$password"
+}
