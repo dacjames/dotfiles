@@ -141,18 +141,20 @@ if which jenv > /dev/null; then eval "$(jenv init -)"; fi
 # Ruby Env
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
+# Conscript (Scala)
+if [ -d ~/.conscript ]; then
+    export CONSCRIPT_HOME="$HOME/.conscript"
+    export CONSCRIPT_OPTS="-XX:MaxPermSize=512M -Dfile.encoding=UTF-8"
+    export PATH="$CONSCRIPT_HOME/bin:$PATH"
+fi
+
+# Load functions
+if [ -f ~/.zshrc.functions ]; then
+    source ~/.zshrc.functions
+fi
+
 # Local (non-synced) zsh settings.
 if [ -f ~/.zshrc.local ]; then
     source ~/.zshrc.local
 fi
-
-function vice_login() {
-  local username=$1
-  local password=""
-  echo -n "Please enter VICE password for $username: "
-  read -sr password
-  echo
-  export VICE_USERNAME="$username"
-  export VICE_PWD="$password"
-}
 

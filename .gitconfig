@@ -14,3 +14,10 @@
     clean = git-lfs clean %f
     smudge = git-lfs smudge %f
     required = true
+[merge]
+	tool = p4mergetool
+[mergetool "p4mergetool"]
+	cmd = $HOME/Applications/p4merge.app/Contents/Resources/launchp4merge $PWD/$BASE $PWD/$REMOTE $PWD/$LOCAL $PWD/$MERGED
+	trustExitCode = false
+[mergetool]
+	keepBackup = false
