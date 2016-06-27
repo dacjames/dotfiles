@@ -21,3 +21,5 @@
 	trustExitCode = false
 [mergetool]
 	keepBackup = false
+[credential]
+	helper = osxkeychain
