@@ -11,9 +11,9 @@
     lg = !"git lg2"
 
 [filter "lfs"]
-    clean = git-lfs clean %f
-    smudge = git-lfs smudge %f
     required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
 [merge]
 	tool = p4mergetool
 [mergetool "p4mergetool"]
