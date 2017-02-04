@@ -118,6 +118,9 @@ alias gm='git commit -m'
 alias gf='git flow'
 alias gl='git lg'
 alias gdc='git diff --cached'
+function gb() {
+    git checkout "$@" || git checkout -b "$@"
+}
 
 export EDITOR=$(which vim)
 
@@ -146,6 +149,10 @@ if [ -d ~/.conscript ]; then
     export CONSCRIPT_HOME="$HOME/.conscript"
     export CONSCRIPT_OPTS="-XX:MaxPermSize=512M -Dfile.encoding=UTF-8"
     export PATH="$CONSCRIPT_HOME/bin:$PATH"
+fi
+
+if [ -d ~/Code/ingydotnet/git-subrepo ]; then
+    source ~/Code/ingydotnet/git-subrepo/.rc
 fi
 
 # Load functions
