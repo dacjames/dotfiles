@@ -1,6 +1,6 @@
 [user]
-	email = dacjames@gmail.com
-	name = Daniel Collins
+	email = daniel.woodlins@viasat.com
+	name = Daniel Woodlins
 [push]
 	default = simple
 
@@ -14,6 +14,7 @@
     required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
 [merge]
 	tool = p4mergetool
 [mergetool "p4mergetool"]
