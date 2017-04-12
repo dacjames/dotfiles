@@ -118,6 +118,7 @@ alias gm='git commit -m'
 alias gf='git flow'
 alias gl='git lg'
 alias gdc='git diff --cached'
+alias gp='git push'
 function gb() {
     git checkout "$@" || git checkout -b "$@"
 }
@@ -143,6 +144,11 @@ if which jenv > /dev/null; then eval "$(jenv init -)"; fi
 
 # Ruby Env
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+# Path to user ruby gems
+if which ruby >/dev/null && which gem >/dev/null; then
+    PATH="$(ruby -rubygems -e 'puts Gem.user_dir')/bin:$PATH"
+fi
 
 # Conscript (Scala)
 if [ -d ~/.conscript ]; then
