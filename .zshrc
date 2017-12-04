@@ -1,5 +1,9 @@
 # Path to your oh-my-zsh installation.
+<<<<<<< HEAD
 export ZSH=/Users/dcollins/.oh-my-zsh
+=======
+export ZSH="$HOME/.oh-my-zsh"
+>>>>>>> Update .zshrc for python3
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -74,10 +78,17 @@ source $ZSH/oh-my-zsh.sh
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
-POWERLINE_SOURCE="$HOME/Code/powerline/powerline"
+POWERLINE_SOURCE="$HOME/Code/github.com/powerline/powerline"
 POWERLINE_VENV="$HOME/.venv/powerline"
 POWERLINE_PIP="$POWERLINE_VENV/bin/pip"
 POWERLINE_PYTHON="$POWERLINE_VENV/bin/python"
+
+## If powerline source is not available, clone it
+
+if ! [ -d "${POWERLINE_SOURCE}" ]; then
+    mkdir -p $(dirname "$POWERLINE_SOURCE")
+    git clone https://github.com/powerline/powerline.git "$POWERLINE_SOURCE"
+fi
 
 ## If powerline breaks b/c of python updates:
 ##   - Recreate ~/.venv/powerline
@@ -90,7 +101,7 @@ if ! "$POWERLINE_VENV/bin/python" --version >/dev/null 2>&1; then
         rm -r "$POWERLINE_VENV.bckp"
     fi
     mv "$POWERLINE_VENV" "$POWERLINE_VENV.bckp"
-    virtualenv "$POWERLINE_VENV"
+    python3 -m venv "$POWERLINE_VENV"
     "$POWERLINE_PIP" install -e "$POWERLINE_SOURCE"
     "$POWERLINE_PYTHON" "$POWERLINE_SOURCE/scripts/powerline-daemon" --replace
 fi
