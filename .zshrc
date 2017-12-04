@@ -1,9 +1,5 @@
 # Path to your oh-my-zsh installation.
-<<<<<<< HEAD
-export ZSH=/Users/dcollins/.oh-my-zsh
-=======
 export ZSH="$HOME/.oh-my-zsh"
->>>>>>> Update .zshrc for python3
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -155,6 +151,11 @@ if which jenv > /dev/null; then eval "$(jenv init -)"; fi
 
 # Ruby Env
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+# Golang
+if [ -d "$HOME/Go" ]; then
+    export GOPATH="$HOME/Go"
+fi
 
 # Path to user ruby gems
 if which ruby >/dev/null && which gem >/dev/null; then
