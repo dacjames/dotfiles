@@ -49,14 +49,13 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(osx)
+plugins=(macos)
 
-# User configuration
-
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin"
-export MANPATH="/usr/local/man:$MANPATH"
-
-source $ZSH/oh-my-zsh.sh
+if [ -f "$ZSH/oh-my-zsh.sh" ]; then
+    source $ZSH/oh-my-zsh.sh
+else
+    echo "Please install oh-my-zsh from https://ohmyz.sh/#install"
+fi
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -157,9 +156,16 @@ if [ -d "$HOME/Go" ]; then
     export GOPATH="$HOME/Go"
 fi
 
+# Ruby (version that ships with osx errors out)
+if [ -d "/opt/homebrew/opt/ruby" ]; then
+    export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+else 
+    echo "Please install the latest ruby from homebrew."
+fi
+
 # Path to user ruby gems
 if which ruby >/dev/null && which gem >/dev/null; then
-    PATH="$(ruby -rubygems -e 'puts Gem.user_dir')/bin:$PATH"
+    PATH="$(ruby -e 'puts Gem.user_dir')/bin:$PATH"
 fi
 
 # Conscript (Scala)
