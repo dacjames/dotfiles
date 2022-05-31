@@ -1,3 +1,4 @@
+# set -x
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
@@ -69,6 +70,14 @@ fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
+
+# Python after macOS removed python
+if [ -f "$(brew --prefix)/bin/python3" ]; then
+if ! [ -f "$(brew --prefix)/bin/python" ]; then
+    ln -s "$(brew --prefix)/bin/python"{3,}
+    ln -s "$(brew --prefix)/bin/pip"{3,}
+fi
+fi
 
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
@@ -154,6 +163,7 @@ if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 # Golang
 if [ -d "$HOME/Go" ]; then
     export GOPATH="$HOME/Go"
+    export PATH="$GOPATH/bin:$PATH"
 fi
 
 # Ruby (version that ships with osx errors out)
