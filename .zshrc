@@ -134,6 +134,7 @@ alias gf='git flow'
 alias gl='git lg'
 alias gdc='git diff --cached'
 alias gp='git push'
+alias gd='git diff'
 function gb() {
     git checkout "$@" || git checkout -b "$@"
 }
